@@ -143,9 +143,9 @@ function drawSearchResults(data) {
 		var tr = $("<tr>");
 		var tdImage = $("<td>");
 		var div = $("<div>");
-		$("<button>").html("X").attr("onclick",
+		$('<button title="Delete this contact">').html("X").attr("onclick",
 				"deleteContact('" + contact.link[0].href + "')").appendTo(div);
-		$("<button>").html(contact.name).attr("onclick",
+		$('<button title="Edit this contact">').html(contact.name).attr("onclick",
 				"loadDataToForm('" + contact.link[1].href + "')").appendTo(div);
 		div.appendTo(tdImage);
 		$('<img class="listPreview">').attr("src", contact.profileImage)

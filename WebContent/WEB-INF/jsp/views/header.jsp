@@ -1,3 +1,3 @@
 <ul>
-  <li><a href="#"><button onclick="loadDataToForm(0)">+</button>Contacts</a></li>
+  <li><a href="#">Contacts</a></li>
 </ul>

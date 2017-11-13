@@ -92,9 +92,10 @@
 		Phone Number
 		<input type="radio" name="type" value="contact/email/">
 		Email
-		<button onclick="refreshContactsList()">Search</button>
+		<input type="text" id="textSearch">
+		<button title="Apply Filter" onclick="refreshContactsList()">Search</button>
 	</div>
-	<input type="text" id="textSearch">
+	<button title="Create New Contact" onclick="loadDataToForm(0)">New Contact</button>
 	<table id="contactTable">
 		<thead>
 			<tr>

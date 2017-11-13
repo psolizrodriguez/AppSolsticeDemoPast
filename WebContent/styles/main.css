@@ -137,3 +137,7 @@ input[type=button]:hover {
 #cancel {
 	background-color: red;
 }
+#textSearch{
+	width: 30%;
+	height: 20px;
+}

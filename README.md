@@ -70,9 +70,9 @@ http://18.220.231.8:8080/AppSolsticeDemo/
 ### 1. com.solstice.contact.web.resource.impl.ContactResourceImpl.java (/contact)
 #### a. List all contacts
 ##### Description: 
-This method performs a search over the title column of product table joining it with inventory and verifying the quantity is bigger than 0  
+This method returns all the records of the Contact table
 ##### URI: 
-http://18.220.231.8:8080/AppSolsticeDemo/services/services/contact 
+http://18.220.231.8:8080/AppSolsticeDemo/services/contact 
 ##### Parameters
 None 
 ##### Method: 
@@ -89,23 +89,165 @@ none
 Collection of ContactRepresentation type.  
 ```
 [
-    {
-        "contactId": 1,
-        "name": "Percy Soliz",
+     {
+        "contactId": 10,
+        "name": "Peter Parker",
         "company": "Solstice",
-        "profileImage": null,
-        "email": "percy.soliz.rodriguez@gmail.com",
+        "profileImage": "http://18.220.231.8:8080/AppSolsticeDemo/viewContactPicture.html?contactId=10",
+        "email": "peter.parker@gmail.com",
         "birthdate": "02/01/1988",
         "personalPhoneNumber": "312-383-8870",
-        "workPhoneNumber": null,
+        "workPhoneNumber": "312-383-8870",
         "address": {
-            "addressId": 1,
+            "addressId": 10,
             "street": "1068 W Granville Ave",
             "unit": "22",
             "city": "Chicago",
             "state": "IL",
             "zip": "60660"
-        }
+        },
+        "link": [
+            {
+                "type": "application/json",
+                "method": "DELETE",
+                "rel": "delete",
+                "href": "http://18.220.231.8:8080/AppSolsticeDemo/services/contact/10"
+            },
+            {
+                "type": "application/json",
+                "method": "GET",
+                "rel": "refresh",
+                "href": "http://18.220.231.8:8080/AppSolsticeDemo/services/contact/10"
+            },
+            {
+                "type": "application/json",
+                "method": "PUT",
+                "rel": "modify",
+                "href": "http://18.220.231.8:8080/AppSolsticeDemo/services/contact/10"
+            }
+        ]
+    }
+]
+```
+#### b. List all contacts by Email  (/email/{email})
+##### Description: 
+This method returns all the records of the Contact table with matching email
+##### URI: 
+http://18.220.231.8:8080/AppSolsticeDemo/services/contact/email/jane.doe 
+##### Parameters
+**email:** string to search on database
+##### Method: 
+GET  
+##### Headers:   
+```
+Accept:application/json  
+```
+##### Body:  
+```
+none
+```
+##### Response:  
+Collection of ContactRepresentation type.  
+```
+[
+    {
+        "contactId": 33,
+        "name": "Jane Doe",
+        "company": "Microsoft",
+        "profileImage": "http://18.220.231.8:8080/AppSolsticeDemo/viewContactPicture.html?contactId=33",
+        "email": "jane.doe@gmail.com",
+        "birthdate": "01/01/1990",
+        "personalPhoneNumber": "312-333-3123",
+        "workPhoneNumber": "",
+        "address": {
+            "addressId": 33,
+            "street": "Randolph",
+            "unit": "34",
+            "city": "Chicago",
+            "state": "IL",
+            "zip": "60611"
+        },
+        "link": [
+            {
+                "type": "application/json",
+                "method": "DELETE",
+                "rel": "delete",
+                "href": "http://18.220.231.8:8080/AppSolsticeDemo/services/contact/33"
+            },
+            {
+                "type": "application/json",
+                "method": "GET",
+                "rel": "refresh",
+                "href": "http://18.220.231.8:8080/AppSolsticeDemo/services/contact/33"
+            },
+            {
+                "type": "application/json",
+                "method": "PUT",
+                "rel": "modify",
+                "href": "http://18.220.231.8:8080/AppSolsticeDemo/services/contact/33"
+            }
+        ]
+    }
+]
+```
+#### c. List all contacts by Phone Number  (/phoneNumber/{phoneNumber})
+##### Description: 
+This method returns all the records of the Contact table with matching personal or work phone number
+##### URI: 
+http://18.220.231.8:8080/AppSolsticeDemo/services/contact/phoneNumber/312-333-4444 
+##### Parameters
+**phoneNumber:** string to search on database
+##### Method: 
+GET  
+##### Headers:   
+```
+Accept:application/json  
+```
+##### Body:  
+```
+none
+```
+##### Response:  
+Collection of ContactRepresentation type.  
+```
+[
+    {
+        "contactId": 33,
+        "name": "Jane Doe",
+        "company": "Microsoft",
+        "profileImage": "http://18.220.231.8:8080/AppSolsticeDemo/viewContactPicture.html?contactId=33",
+        "email": "jane.doe@gmail.com",
+        "birthdate": "01/01/1990",
+        "personalPhoneNumber": "312-333-3123",
+        "workPhoneNumber": "",
+        "address": {
+            "addressId": 33,
+            "street": "Randolph",
+            "unit": "34",
+            "city": "Chicago",
+            "state": "IL",
+            "zip": "60611"
+        },
+        "link": [
+            {
+                "type": "application/json",
+                "method": "DELETE",
+                "rel": "delete",
+                "href": "http://18.220.231.8:8080/AppSolsticeDemo/services/contact/33"
+            },
+            {
+                "type": "application/json",
+                "method": "GET",
+                "rel": "refresh",
+                "href": "http://18.220.231.8:8080/AppSolsticeDemo/services/contact/33"
+            },
+            {
+                "type": "application/json",
+                "method": "PUT",
+                "rel": "modify",
+                "href": "http://18.220.231.8:8080/AppSolsticeDemo/services/contact/33"
+            }
+        ]
     }
 ]
 ```
