@@ -5,8 +5,10 @@
 
 ## Applicant 
 [Percy Soliz](https://www.linkedin.com/in/psolizrodriguez/)  
+**-Email:** percy.soliz.rodriguez@gmail.com  
+**-Phone Number:** 312-383-8870  
 
-## Purpose
+## Purposee
 As part of Solstice’s hiring process, we ask interviewees to complete a small project to help assess skill, experience, ingenuity, problem-solving and knowledge.  
 
 ## Scope
@@ -63,8 +65,10 @@ http://18.220.231.8:8080/AppSolsticeDemo/
 **Password:** solstice  
 
 ## Class Diagram  
+![Class Diagram](https://i.imgur.com/jQ3zazu.png)  
 
 ## Entity Relationship Diagram  
+![ERD](https://i.imgur.com/YMEcBxP.png)  
 
 ## Endpoints 
 ### 1. com.solstice.contact.web.resource.impl.ContactResourceImpl.java (/contact)
