@@ -4,7 +4,7 @@
 [Senior Java/Spring Developer](https://stackoverflow.com/jobs/158140/senior-java-spring-developer-solstice)  
 
 ## Applicant 
-[Percy Soliz](https://www.linkedin.com/in/psolizrodriguez/)  
+**-Name:** [Percy Soliz](https://www.linkedin.com/in/psolizrodriguez/)  
 **-Email:** percy.soliz.rodriguez@gmail.com  
 **-Phone Number:** 312-383-8870  
 
