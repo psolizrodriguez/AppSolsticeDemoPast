@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<query name="com.solstice.contact.dao.impl.ContactDaoImpl.listAll">
+		<![CDATA[FROM Contact]]>
+	</query>
+	<query name="com.solstice.contact.dao.impl.ContactDaoImpl.getById">
+		<![CDATA[FROM Contact c WHERE c.contactId = ?1]]>
+	</query>
+</hibernate-mapping>
