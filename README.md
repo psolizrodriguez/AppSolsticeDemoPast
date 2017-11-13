@@ -1,5 +1,5 @@
 # Backend Coding Challenge for Solstice
-##Position
+##Position  
 [Senior Java/Spring Developer](https://stackoverflow.com/jobs/158140/senior-java-spring-developer-solstice)  
 
 ## Applicant 
@@ -27,6 +27,17 @@ The implemented solution is running on an Apache Tomcat Server 9.0 and has the f
 -Apache CXF 2.7 for the management of endpoints and JAXRS as marshaler.  
 -JUnit 4 and JAXRS server for testing.  
 
+## Import Project in Eclipse
+1) Create directory "AppSolsticeDemo" inside of your workspace  
+2) Execute the following code inside of that directory once Git is installed in your machine: 
+```
+git init  
+git remote add AppSolsticeDemo https://github.com/psolizrodriguez/AppSolsticeDemo.git  
+git pull AppSolsticeDemo master
+```
+3) Create a Dynamic Web with tomcat 9 as container in Eclipse using that path  
+4) Add CXF 2.7 Runtime to the Runtime Libraries of the project in Eclipse
+
 ## Package Structure
 **-com.solstice.common.model:** Contains the Entities.  
 **-com.solstice.contact.dao:** Contains the DAO layer.  
@@ -37,6 +48,7 @@ The implemented solution is running on an Apache Tomcat Server 9.0 and has the f
 **-com.solstice.contact.web.resource:** Contains the classes that represent the available endpoints to the clients.  
 
 ## Data Base Connection Details
+**HeidiSQL:** https://www.heidisql.com/
 **DBMS:** MySQL 5.7  
 **Host:** 18.220.231.8  
 **Database:** solsticeDemo  
@@ -48,8 +60,8 @@ The implemented solution is running on an Apache Tomcat Server 9.0 and has the f
 ## Entity Relationship Diagram  
 
 ## Endpoints 
-### 1. List all contacts
-#### a. Search item database by product
+### 1. com.solstice.contact.web.resource.impl.ContactResourceImpl.java (/contact)
+#### a. List all contacts
 ##### Description: 
 This method performs a search over the title column of product table joining it with inventory and verifying the quantity is bigger than 0  
 ##### URI: 
