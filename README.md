@@ -68,7 +68,7 @@ http://18.220.231.8:8080/AppSolsticeDemo/
 
 ## Endpoints 
 ### 1. com.solstice.contact.web.resource.impl.ContactResourceImpl.java (/contact)
-#### a. List all contacts
+#### a. List all Contacts
 ##### Description: 
 This method returns all the records of the Contact table
 ##### URI: 
@@ -129,7 +129,7 @@ Collection of ContactRepresentation type.
     }
 ]
 ```
-#### b. List all contacts by Email  (/email/{email})
+#### b. List all Contacts by Email  (/email/{email})
 ##### Description: 
 This method returns all the records of the Contact table with matching email
 ##### URI: 
@@ -190,7 +190,7 @@ Collection of ContactRepresentation type.
     }
 ]
 ```
-#### c. List all contacts by Phone Number  (/phoneNumber/{phoneNumber})
+#### c. List all Contacts by Phone Number  (/phoneNumber/{phoneNumber})
 ##### Description: 
 This method returns all the records of the Contact table with matching personal or work phone number
 ##### URI: 
@@ -250,4 +250,202 @@ Collection of ContactRepresentation type.
         ]
     }
 ]
+```
+#### d. Retrieve a contact record (/{contactId})
+##### Description: 
+This method returns one record corresponding the contactId sent on the URL
+##### URI: 
+http://18.220.231.8:8080/AppSolsticeDemo/services/contact/10
+##### Parameters
+**contactId:** variable of type Long, referencing the contactId of the Contact to be retrieved
+##### Method: 
+GET  
+##### Headers:   
+```
+Accept:application/json  
+```
+##### Body:  
+```
+none
+```
+##### Response:  
+Object of ContactRepresentation type.  
+```
+{
+    "contactId": 10,
+    "name": "Peter Parker",
+    "company": "Solstice",
+    "profileImage": "http://18.220.231.8:8080/AppSolsticeDemo/viewContactPicture.html?contactId=10",
+    "email": "peter.parker@gmail.com",
+    "birthdate": "02/01/1988",
+    "personalPhoneNumber": "312-383-8870",
+    "workPhoneNumber": "312-383-8870",
+    "address": {
+        "addressId": 10,
+        "street": "1068 W Granville Ave",
+        "unit": "22",
+        "city": "Chicago",
+        "state": "IL",
+        "zip": "60660"
+    },
+    "link": [
+        {
+            "type": "application/json",
+            "method": "DELETE",
+            "rel": "delete",
+            "href": "http://18.220.231.8:8080/AppSolsticeDemo/services/contact/10"
+        },
+        {
+            "type": "application/json",
+            "method": "GET",
+            "rel": "refresh",
+            "href": "http://18.220.231.8:8080/AppSolsticeDemo/services/contact/10"
+        },
+        {
+            "type": "application/json",
+            "method": "PUT",
+            "rel": "modify",
+            "href": "http://18.220.231.8:8080/AppSolsticeDemo/services/contact/10"
+        }
+    ]
+}
+```
+#### e. Create a contact record
+##### Description: 
+This method allows us to create a new Contact 
+##### URI: 
+http://18.220.231.8:8080/AppSolsticeDemo/services/contact
+##### Parameters
+none  
+##### Method: 
+POST  
+##### Headers:   
+```
+Accept:application/json  
+Content-Type:application/json  
+```
+##### Body:  
+Object of ContactRequest type.
+
+```
+{
+	"name": "Clark Kent",
+    "company": "Planet",
+    "profileImage": "",
+    "email": "clark.kent@gmail.com",
+    "birthdate": "01/01/1990",
+    "personalPhoneNumber": "312-333-5555",
+    "workPhoneNumber": "312-333-5554",
+    "address": {
+        "street": "Michigan Ave",
+        "unit": "22",
+        "city": "Rochester",
+        "state": "NY",
+        "zip": "60400"
+    }
+}
+```
+##### Response:  
+Object of ContactRepresentation type.
+
+```
+{
+    "contactId": 35,
+    "name": "Clark Kent",
+    "company": "Planet",
+    "profileImage": "http://18.220.231.8:8080/AppSolsticeDemo/viewContactPicture.html?contactId=35",
+    "email": "clark.kent@gmail.com",
+    "birthdate": "01/01/1990",
+    "personalPhoneNumber": "312-333-5555",
+    "workPhoneNumber": "312-333-5554",
+    "address": {
+        "addressId": 35,
+        "street": "Michigan Ave",
+        "unit": "22",
+        "city": "Rochester",
+        "state": "NY",
+        "zip": "60400"
+    },
+    "link": [
+        {
+            "type": "application/json",
+            "method": "DELETE",
+            "rel": "delete",
+            "href": "http://18.220.231.8:8080/AppSolsticeDemo/services/contact/35"
+        },
+        {
+            "type": "application/json",
+            "method": "GET",
+            "rel": "refresh",
+            "href": "http://18.220.231.8:8080/AppSolsticeDemo/services/contact/35"
+        },
+        {
+            "type": "application/json",
+            "method": "PUT",
+            "rel": "modify",
+            "href": "http://18.220.231.8:8080/AppSolsticeDemo/services/contact/35"
+        }
+    ]
+}
+```
+#### f. Update a contact record (/{contactId})
+##### Description: 
+This method allows us to update the corresponding values of a Contact
+##### URI: 
+http://18.220.231.8:8080/AppSolsticeDemo/services/contact/35
+##### Parameters
+**contactId:** variable of type Long, referencing the contactId of the Contact to be updated
+##### Method: 
+PUT 
+##### Headers:   
+```
+Accept:application/json  
+Content-Type:application/json  
+```
+##### Body: 
+Object of ContactRequest type.
+
+```
+{
+	"name": "Clark Kent",
+    "company": "Planet",
+    "profileImage": "",
+    "email": "clark.kent@gmail.com",
+    "birthdate": "01/01/1990",
+    "personalPhoneNumber": "312-333-5555",
+    "workPhoneNumber": "312-333-5554",
+    "address": {
+        "street": "Michigan Ave",
+        "unit": "34",
+        "city": "New York",
+        "state": "NY",
+        "zip": "60200"
+    }
+}
+```
+##### Response:  
+```
+Ok: 200
+```
+#### g. Delete a contact record (/{contactId})
+##### Description: 
+This method allows us to delete a Contact
+##### URI: 
+http://18.220.231.8:8080/AppSolsticeDemo/services/contact/35
+##### Parameters
+**contactId:** variable of type Long, referencing the contactId of the Contact to be deleted
+##### Method: 
+DELETE 
+##### Headers:   
+```
+Accept:application/json  
+Content-Type:application/json  
+```
+##### Body: 
+```
+none
+```
+##### Response:  
+```
+Ok: 200
 ```
