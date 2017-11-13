@@ -8,7 +8,7 @@
 **-Email:** percy.soliz.rodriguez@gmail.com  
 **-Phone Number:** 312-383-8870  
 
-## Purposee
+## Purpose
 As part of Solstice’s hiring process, we ask interviewees to complete a small project to help assess skill, experience, ingenuity, problem-solving and knowledge.  
 
 ## Scope
@@ -200,7 +200,7 @@ Collection of ContactRepresentation type.
 ##### Description: 
 This method returns all the records of the Contact table with matching personal or work phone number
 ##### URI: 
-http://18.220.231.8:8080/AppSolsticeDemo/services/contact/phoneNumber/312-333-4444 
+http://18.220.231.8:8080/AppSolsticeDemo/services/contact/phoneNumber/312
 ##### Parameters
 **-phoneNumber:** string to search on database
 ##### Method: 
@@ -568,8 +568,7 @@ http://18.220.231.8:8080/AppSolsticeDemo/services/contact/35
 DELETE 
 ##### Headers:   
 ```
-Accept:application/json  
-Content-Type:application/json  
+Accept:application/json   
 ```
 ##### Body: 
 ```
