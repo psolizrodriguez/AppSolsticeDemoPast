@@ -1,6 +1,6 @@
 # Backend Coding Challenge for Solstice  
 
-##Position  
+## Position  
 [Senior Java/Spring Developer](https://stackoverflow.com/jobs/158140/senior-java-spring-developer-solstice)  
 
 ## Applicant 
@@ -39,6 +39,11 @@ git pull AppSolsticeDemo master
 3) Create a Dynamic Web with tomcat 9 as container in Eclipse using that path  
 4) Add CXF 2.7 Runtime to the Runtime Libraries of the project in Eclipse
 
+## Test Client
+
+A pure JavaScript and JQuery client was created in order to provide a GUI and a faster way of visually testing the endpoints. The code of this client is located at the "Web Content" folder of the same project, and is currently being hosted at:  
+http://18.220.231.8:8080/AppSolsticeDemo/  
+
 ## Package Structure
 **-com.solstice.common.model:** Contains the Entities.  
 **-com.solstice.contact.dao:** Contains the DAO layer.  
@@ -46,10 +51,11 @@ git pull AppSolsticeDemo master
 **-com.solstice.contact.web.activity:** Contains the classes to help process data to the endpoints.  
 **-com.solstice.contact.web.representations:** Contains the beans for parsing the data between server and client.  
 **-com.solstice.contact.web.request:** Contains the beans for parsing the data between client and server.  
-**-com.solstice.contact.web.resource:** Contains the classes that represent the available endpoints to the clients.  
+**-com.solstice.contact.web.resource:** Contains the classes that represent the available endpoints to the clients. 
+**-com.solstice.contact.web.resource.test:** Contains the classes with the JUnit test cases for the endpoins. 
 
 ## Data Base Connection Details
-**HeidiSQL:** https://www.heidisql.com/
+**HeidiSQL:** https://www.heidisql.com/  
 **DBMS:** MySQL 5.7  
 **Host:** 18.220.231.8  
 **Database:** solsticeDemo  
