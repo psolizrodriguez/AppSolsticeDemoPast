@@ -135,7 +135,7 @@ This method returns all the records of the Contact table with matching email
 ##### URI: 
 http://18.220.231.8:8080/AppSolsticeDemo/services/contact/email/jane.doe 
 ##### Parameters
-**email:** string to search on database
+**-email:** string to search on database
 ##### Method: 
 GET  
 ##### Headers:   
@@ -196,7 +196,7 @@ This method returns all the records of the Contact table with matching personal 
 ##### URI: 
 http://18.220.231.8:8080/AppSolsticeDemo/services/contact/phoneNumber/312-333-4444 
 ##### Parameters
-**phoneNumber:** string to search on database
+**-phoneNumber:** string to search on database
 ##### Method: 
 GET  
 ##### Headers:   
@@ -251,13 +251,135 @@ Collection of ContactRepresentation type.
     }
 ]
 ```
-#### d. Retrieve a contact record (/{contactId})
+#### d. List all Contacts by City (/address/city/{city})
+##### Description: 
+This method returns all the records of the Contact with matching city on their address 
+##### URI: 
+http://18.220.231.8:8080/AppSolsticeDemo/services/contact/address/city/Chicago 
+##### Parameters
+**-city:** string to search on database
+##### Method: 
+GET  
+##### Headers:   
+```
+Accept:application/json  
+```
+##### Body:  
+```
+none
+```
+##### Response:  
+Collection of ContactRepresentation type.  
+```
+[
+    {
+        "contactId": 33,
+        "name": "Jane Doe",
+        "company": "Microsoft",
+        "profileImage": "http://18.220.231.8:8080/AppSolsticeDemo/viewContactPicture.html?contactId=33",
+        "email": "jane.doe@gmail.com",
+        "birthdate": "01/01/1990",
+        "personalPhoneNumber": "312-333-3123",
+        "workPhoneNumber": "",
+        "address": {
+            "addressId": 33,
+            "street": "Randolph",
+            "unit": "34",
+            "city": "Chicago",
+            "state": "IL",
+            "zip": "60611"
+        },
+        "link": [
+            {
+                "type": "application/json",
+                "method": "DELETE",
+                "rel": "delete",
+                "href": "http://18.220.231.8:8080/AppSolsticeDemo/services/contact/33"
+            },
+            {
+                "type": "application/json",
+                "method": "GET",
+                "rel": "refresh",
+                "href": "http://18.220.231.8:8080/AppSolsticeDemo/services/contact/33"
+            },
+            {
+                "type": "application/json",
+                "method": "PUT",
+                "rel": "modify",
+                "href": "http://18.220.231.8:8080/AppSolsticeDemo/services/contact/33"
+            }
+        ]
+    }
+]
+```
+#### e. List all Contacts by State (/address/state/{state})
+##### Description: 
+This method returns all the records of the Contact with matching state on their address 
+##### URI: 
+http://18.220.231.8:8080/AppSolsticeDemo/services/contact/address/state/IL 
+##### Parameters
+**-state:** string to search on database
+##### Method: 
+GET  
+##### Headers:   
+```
+Accept:application/json  
+```
+##### Body:  
+```
+none
+```
+##### Response:  
+Collection of ContactRepresentation type.  
+```
+[
+    {
+        "contactId": 33,
+        "name": "Jane Doe",
+        "company": "Microsoft",
+        "profileImage": "http://18.220.231.8:8080/AppSolsticeDemo/viewContactPicture.html?contactId=33",
+        "email": "jane.doe@gmail.com",
+        "birthdate": "01/01/1990",
+        "personalPhoneNumber": "312-333-3123",
+        "workPhoneNumber": "",
+        "address": {
+            "addressId": 33,
+            "street": "Randolph",
+            "unit": "34",
+            "city": "Chicago",
+            "state": "IL",
+            "zip": "60611"
+        },
+        "link": [
+            {
+                "type": "application/json",
+                "method": "DELETE",
+                "rel": "delete",
+                "href": "http://18.220.231.8:8080/AppSolsticeDemo/services/contact/33"
+            },
+            {
+                "type": "application/json",
+                "method": "GET",
+                "rel": "refresh",
+                "href": "http://18.220.231.8:8080/AppSolsticeDemo/services/contact/33"
+            },
+            {
+                "type": "application/json",
+                "method": "PUT",
+                "rel": "modify",
+                "href": "http://18.220.231.8:8080/AppSolsticeDemo/services/contact/33"
+            }
+        ]
+    }
+]
+```
+#### f. Retrieve a contact record (/{contactId})
 ##### Description: 
 This method returns one record corresponding the contactId sent on the URL
 ##### URI: 
 http://18.220.231.8:8080/AppSolsticeDemo/services/contact/10
 ##### Parameters
-**contactId:** variable of type Long, referencing the contactId of the Contact to be retrieved
+**-contactId:** variable of type Long, referencing the contactId of the Contact to be retrieved
 ##### Method: 
 GET  
 ##### Headers:   
@@ -310,7 +432,7 @@ Object of ContactRepresentation type.
     ]
 }
 ```
-#### e. Create a contact record
+#### g. Create a contact record
 ##### Description: 
 This method allows us to create a new Contact 
 ##### URI: 
@@ -388,13 +510,13 @@ Object of ContactRepresentation type.
     ]
 }
 ```
-#### f. Update a contact record (/{contactId})
+#### h. Update a contact record (/{contactId})
 ##### Description: 
 This method allows us to update the corresponding values of a Contact
 ##### URI: 
 http://18.220.231.8:8080/AppSolsticeDemo/services/contact/35
 ##### Parameters
-**contactId:** variable of type Long, referencing the contactId of the Contact to be updated
+**-contactId:** variable of type Long, referencing the contactId of the Contact to be updated
 ##### Method: 
 PUT 
 ##### Headers:   
@@ -427,7 +549,7 @@ Object of ContactRequest type.
 ```
 Ok: 200
 ```
-#### g. Delete a contact record (/{contactId})
+#### i. Delete a contact record (/{contactId})
 ##### Description: 
 This method allows us to delete a Contact
 ##### URI: 
