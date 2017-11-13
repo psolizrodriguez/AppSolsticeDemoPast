@@ -17,20 +17,13 @@
   <jaxrs:server name="SolsticeService" address="/">
 		<jaxrs:serviceBeans>
 			<ref bean="contactServiceRest" />
-			<ref bean="searchServiceRest" />
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
 			<ref bean="jacksonProvider" />
 		</jaxrs:providers> 
 
-		<!-- <jaxrs:schemaLocations>
-			<jaxrs:schemaLocation>com.solstice.contact.web.representations.ContactRepresentation</jaxrs:schemaLocation>
-			<jaxrs:schemaLocation>com.solstice.contact.web.requests.ContactRequest</jaxrs:schemaLocation>
-		</jaxrs:schemaLocations> -->
-
 	</jaxrs:server>
   	<bean id="contactServiceRest" class="com.solstice.contact.web.resource.impl.ContactResourceImpl" />
-  	<bean id="searchServiceRest" class="com.solstice.contact.web.resource.impl.SearchResourceImpl" />
   	
   
 </beans>

@@ -77,4 +77,40 @@ public class ContactResourceImplTest extends Assert {
 		assertEquals(response.getStatus(), Status.OK.getStatusCode());
 	}
 
+	@SuppressWarnings("unchecked")
+	@Test
+	public void listContactsByEmail() {
+		List<ContactRepresentation> listContactRepresentation;
+		listContactRepresentation = (List<ContactRepresentation>) AppBaseUtilsWeb.createWebClientJUnitTest("contact/email/batman")
+				.getCollection(ContactRepresentation.class);
+		assertNotNull(listContactRepresentation);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Test
+	public void listContactsByPhoneNumber() {
+		List<ContactRepresentation> listContactRepresentation;
+		listContactRepresentation = (List<ContactRepresentation>) AppBaseUtilsWeb.createWebClientJUnitTest("contact/phoneNumber/312")
+				.getCollection(ContactRepresentation.class);
+		assertNotNull(listContactRepresentation);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Test
+	public void listContactsByCity() {
+		List<ContactRepresentation> listContactRepresentation;
+		listContactRepresentation = (List<ContactRepresentation>) AppBaseUtilsWeb.createWebClientJUnitTest("contact/address/city/Chicago")
+				.getCollection(ContactRepresentation.class);
+		assertNotNull(listContactRepresentation);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Test
+	public void listContactsByState() {
+		List<ContactRepresentation> listContactRepresentation;
+		listContactRepresentation = (List<ContactRepresentation>) AppBaseUtilsWeb.createWebClientJUnitTest("contact/address/state/IL")
+				.getCollection(ContactRepresentation.class);
+		assertNotNull(listContactRepresentation);
+	}
+
 }

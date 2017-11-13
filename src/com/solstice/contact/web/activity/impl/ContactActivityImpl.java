@@ -92,4 +92,48 @@ public class ContactActivityImpl implements ContactActivity {
 		return false;
 	}
 
+	public List<ContactRepresentation> listContactsByEmail(String email) {
+		List<ContactRepresentation> listContactRepresentation = new ArrayList<>();
+		List<Contact> listContact = new ArrayList<>();
+		listContact = contactService.listContactsByEmail(email);
+		Iterator<Contact> it = listContact.iterator();
+		while (it.hasNext()) {
+			listContactRepresentation.add(new ContactRepresentation((Contact) it.next()));
+		}
+		return listContactRepresentation;
+	}
+
+	public List<ContactRepresentation> listContactsByPhoneNumber(String phoneNumber) {
+		List<ContactRepresentation> listContactRepresentation = new ArrayList<>();
+		List<Contact> listContact = new ArrayList<>();
+		listContact = contactService.listContactsByPhoneNumber(phoneNumber);
+		Iterator<Contact> it = listContact.iterator();
+		while (it.hasNext()) {
+			listContactRepresentation.add(new ContactRepresentation((Contact) it.next()));
+		}
+		return listContactRepresentation;
+	}
+
+	public List<ContactRepresentation> listContactsByCity(String city) {
+		List<ContactRepresentation> listContactRepresentation = new ArrayList<>();
+		List<Contact> listContact = new ArrayList<>();
+		listContact = contactService.listContactsByCity(city);
+		Iterator<Contact> it = listContact.iterator();
+		while (it.hasNext()) {
+			listContactRepresentation.add(new ContactRepresentation((Contact) it.next()));
+		}
+		return listContactRepresentation;
+	}
+
+	public List<ContactRepresentation> listContactsByState(String state) {
+		List<ContactRepresentation> listContactRepresentation = new ArrayList<>();
+		List<Contact> listContact = new ArrayList<>();
+		listContact = contactService.listContactsByState(state);
+		Iterator<Contact> it = listContact.iterator();
+		while (it.hasNext()) {
+			listContactRepresentation.add(new ContactRepresentation((Contact) it.next()));
+		}
+		return listContactRepresentation;
+	}
+
 }

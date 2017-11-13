@@ -14,4 +14,12 @@ public interface ContactDao extends Dao {
 
 	public boolean remove(Contact contact);
 
+	public List<Contact> listContactsByEmail(String email);
+
+	public List<Contact> listContactsByPhoneNumber(String phoneNumber);
+
+	public List<Contact> listContactsByCity(String city);
+
+	public List<Contact> listContactsByState(String state);
+
 }

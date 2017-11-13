@@ -62,10 +62,30 @@ function cancelSave() {
 function refreshContactsList() {
 	list.show();
 	form.hide();
-	showDialogBlockDialog("Loading Data from Server");
-	$.getJSON("services/contact").done(function(data) {
-		drawSearchResults(data);
-	});
+	var type = $('input[name=type]:checked').val();
+	var url = "services/" + type;
+	
+	if(type != 'contact'){
+		var searchValue = $('#textSearch').val();
+		if (typeof searchValue === 'undefined' || !searchValue){
+			showDialog("You need to type something to search", function() {
+				$('#textSearch').focus();
+			});
+		}else{
+			url += searchValue;
+			showDialogBlockDialog("Loading Data from Server");
+			$.getJSON(url).done(function(data) {
+				drawSearchResults(data);
+			});
+		}
+		
+	}else{
+		showDialogBlockDialog("Loading Data from Server");
+		$.getJSON(url).done(function(data) {
+			drawSearchResults(data);
+		});
+	}
+	
 
 }
 

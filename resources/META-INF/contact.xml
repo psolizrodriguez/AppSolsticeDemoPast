@@ -8,4 +8,16 @@
 	<query name="com.solstice.contact.dao.impl.ContactDaoImpl.getById">
 		<![CDATA[FROM Contact c WHERE c.contactId = ?1]]>
 	</query>
+	<query name="com.solstice.contact.dao.impl.ContactDaoImpl.listContactsByEmail">
+		<![CDATA[FROM Contact c WHERE c.email LIKE ?1]]>
+	</query>
+	<query name="com.solstice.contact.dao.impl.ContactDaoImpl.listContactsByPhoneNumber">
+		<![CDATA[FROM Contact c WHERE c.personalPhoneNumber LIKE ?1 or c.workPhoneNumber LIKE ?1]]>
+	</query>
+	<query name="com.solstice.contact.dao.impl.ContactDaoImpl.listContactsByCity">
+		<![CDATA[FROM Contact c WHERE c.address.city LIKE ?1]]>
+	</query>
+	<query name="com.solstice.contact.dao.impl.ContactDaoImpl.listContactsByState">
+		<![CDATA[FROM Contact c WHERE c.address.state LIKE ?1]]>
+	</query>
 </hibernate-mapping>

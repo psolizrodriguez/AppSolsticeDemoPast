@@ -34,4 +34,24 @@ public class ContactServiceImpl implements ContactService {
 		return contactDao.remove(contact);
 	}
 
+	@Override
+	public List<Contact> listContactsByEmail(String email) {
+		return contactDao.listContactsByEmail(email);
+	}
+
+	@Override
+	public List<Contact> listContactsByPhoneNumber(String phoneNumber) {
+		return contactDao.listContactsByPhoneNumber(phoneNumber);
+	}
+
+	@Override
+	public List<Contact> listContactsByCity(String city) {
+		return contactDao.listContactsByCity(city);
+	}
+
+	@Override
+	public List<Contact> listContactsByState(String state) {
+		return contactDao.listContactsByState(state);
+	}
+
 }

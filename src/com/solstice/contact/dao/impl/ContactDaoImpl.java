@@ -33,4 +33,28 @@ public class ContactDaoImpl extends AbstractBaseDao implements ContactDao {
 	public Contact getById(Long contactId) {
 		return super.verifyNamedQueryAll("com.solstice.contact.dao.impl.ContactDaoImpl.getById", contactId);
 	}
+
+	@Override
+	public List<Contact> listContactsByEmail(String email) {
+		return super.verifyListNamedQueryAll("com.solstice.contact.dao.impl.ContactDaoImpl.listContactsByEmail",
+				"%" + email.trim().replace(" ", "%") + "%");
+	}
+
+	@Override
+	public List<Contact> listContactsByPhoneNumber(String phoneNumber) {
+		return super.verifyListNamedQueryAll("com.solstice.contact.dao.impl.ContactDaoImpl.listContactsByPhoneNumber",
+				"%" + phoneNumber.trim().replace(" ", "%") + "%");
+	}
+
+	@Override
+	public List<Contact> listContactsByCity(String city) {
+		return super.verifyListNamedQueryAll("com.solstice.contact.dao.impl.ContactDaoImpl.listContactsByCity",
+				"%" + city.trim().replace(" ", "%") + "%");
+	}
+
+	@Override
+	public List<Contact> listContactsByState(String state) {
+		return super.verifyListNamedQueryAll("com.solstice.contact.dao.impl.ContactDaoImpl.listContactsByState",
+				"%" + state.trim().replace(" ", "%") + "%");
+	}
 }

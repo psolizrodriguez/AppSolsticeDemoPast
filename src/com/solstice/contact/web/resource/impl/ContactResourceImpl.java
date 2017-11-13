@@ -31,6 +31,38 @@ public class ContactResourceImpl implements ContactResource {
 		return contactActivity.listContacts();
 	}
 
+	@GET
+	@Path("email/{email}")
+	public List<ContactRepresentation> listContactsByEmail(@PathParam("email") String email) {
+		System.out.println("In listContactsByEmail");
+		System.out.println("email : " + email);
+		return contactActivity.listContactsByEmail(email);
+	}
+
+	@GET
+	@Path("phoneNumber/{phoneNumber}")
+	public List<ContactRepresentation> listContactsByPhoneNumber(@PathParam("phoneNumber") String phoneNumber) {
+		System.out.println("In listContactsByPhoneNumber");
+		System.out.println("phoneNumber : " + phoneNumber);
+		return contactActivity.listContactsByPhoneNumber(phoneNumber);
+	}
+
+	@GET
+	@Path("address/city/{city}")
+	public List<ContactRepresentation> listContactsByCity(@PathParam("city") String city) {
+		System.out.println("In listContactsByCity");
+		System.out.println("city : " + city);
+		return contactActivity.listContactsByCity(city);
+	}
+
+	@GET
+	@Path("address/state/{state}")
+	public List<ContactRepresentation> listContactsByState(@PathParam("state") String state) {
+		System.out.println("In listContactsByState");
+		System.out.println("state : " + state);
+		return contactActivity.listContactsByState(state);
+	}
+
 	@POST
 	public ContactRepresentation createContact(ContactRequest contactRequest) {
 		return contactActivity.createContact(contactRequest);
@@ -39,7 +71,7 @@ public class ContactResourceImpl implements ContactResource {
 	@PUT
 	@Path("{contactId}")
 	public Response updateContact(@PathParam("contactId") Long contactId, ContactRequest contactRequest) {
-		if (contactActivity.updateContact(contactId,contactRequest)) {
+		if (contactActivity.updateContact(contactId, contactRequest)) {
 			return Response.status(Status.OK).build();
 		}
 		return Response.status(Status.BAD_REQUEST).build();

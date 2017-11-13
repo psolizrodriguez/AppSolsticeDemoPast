@@ -82,17 +82,17 @@
 </section>
 <section id="list">
 	<div>
-		<input type="radio" name="type" value="all" checked>
+		<input type="radio" name="type" value="contact" checked>
 		All
-		<input type="radio" name="type" value="city">
+		<input type="radio" name="type" value="contact/address/city/">
 		City
-		<input type="radio" name="type" value="state">
+		<input type="radio" name="type" value="contact/address/state/">
 		State
-		<input type="radio" name="type" value="phoneNumber">
+		<input type="radio" name="type" value="contact/phoneNumber/">
 		Phone Number
-		<input type="radio" name="type" value="email">
+		<input type="radio" name="type" value="contact/email/">
 		Email
-		<button>Search</button>
+		<button onclick="refreshContactsList()">Search</button>
 	</div>
 	<input type="text" id="textSearch">
 	<table id="contactTable">

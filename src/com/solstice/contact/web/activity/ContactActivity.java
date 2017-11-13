@@ -16,5 +16,13 @@ public interface ContactActivity {
 	public boolean updateContact(Long contactId, ContactRequest contactRequest);
 
 	public ContactRepresentation getContactById(Long contactId);
+	
+	public List<ContactRepresentation> listContactsByEmail(String email);
+
+	public List<ContactRepresentation> listContactsByPhoneNumber(String phoneNumber);
+
+	public List<ContactRepresentation> listContactsByCity(String city);
+
+	public List<ContactRepresentation> listContactsByState(String state);
 
 }
