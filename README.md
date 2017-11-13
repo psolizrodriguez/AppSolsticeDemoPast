@@ -563,7 +563,7 @@ This method allows us to delete a Contact
 ##### URI: 
 http://18.220.231.8:8080/AppSolsticeDemo/services/contact/35
 ##### Parameters
-**contactId:** variable of type Long, referencing the contactId of the Contact to be deleted
+**-contactId:** variable of type Long, referencing the contactId of the Contact to be deleted
 ##### Method: 
 DELETE 
 ##### Headers:   
