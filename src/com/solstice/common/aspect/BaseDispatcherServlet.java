@@ -23,7 +23,7 @@ public class BaseDispatcherServlet extends DispatcherServlet {
 			InetAddress ip;
 			try {
 				ip = InetAddress.getLocalHost();
-				AppBaseConstantsWeb.PROJECT_URL = "http://18.220.231.8:8080/"
+				AppBaseConstantsWeb.PROJECT_URL = "http://" + ip.getHostAddress() + ":8080/"
 						+ AppBaseConstantsWeb.APPLICATION_NAME + "/";
 				AppBaseConstantsWeb.SERVICES_URL = AppBaseConstantsWeb.PROJECT_URL + "services/";
 			} catch (IOException e) {
