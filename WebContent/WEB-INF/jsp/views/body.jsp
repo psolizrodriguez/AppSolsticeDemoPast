@@ -8,50 +8,20 @@
 			<h1>
 				<spring:message code="contact.label.title.value" />
 			</h1>
-			<img id="output" src="<c:url value="/img/testProfile.jpg" />" />
+			<img crossOrigin="Anonymous" id="profileImage" src="<c:url value="/img/testProfile.jpg" />" />
 			<div>
 				<input type="file" accept="image/*" onchange="previewFile(event)">
 			</div>
 		</article>
-		<label for="name">
-			<spring:message code="contact.label.name.value" />
-		</label>
 		<input type="text" id="name" name="name" placeholder="<spring:message code="contact.label.name.value" />">
-		<label for="company">
-			<spring:message code="contact.label.company.value" />
-		</label>
 		<input type="text" id="company" name="company" placeholder="<spring:message code="contact.label.company.value" />">
-		<label for="email">
-			<spring:message code="contact.label.email.value" />
-		</label>
 		<input type="text" id="email" name="email" placeholder="<spring:message code="contact.label.email.value" />">
-		<label for="birthdate">
-			<spring:message code="contact.label.birthdate.value" />
-		</label>
 		<input type="text" id="birthdate" name="birthdate" placeholder="<spring:message code="contact.label.birthdate.value" />">
-		<label for="phoneNumberPersonal">
-			<spring:message code="contact.label.phoneNumberPersonal.value" />
-		</label>
-		<input type="text" id="phoneNumberPersonal" name="phoneNumberPersonal" placeholder="<spring:message code="contact.label.phoneNumberPersonal.value" />">
-		<label for="phoneNumberWork">
-			<spring:message code="contact.label.phoneNumberWork.value" />
-		</label>
-		<input type="text" id="phoneNumberWork" name="phoneNumberWork" placeholder="<spring:message code="contact.label.phoneNumberWork.value" />">
-		<label for="street">
-			<spring:message code="address.label.street.value" />
-		</label>
+		<input type="text" id="personalPhoneNumber" name="personalPhoneNumber" placeholder="<spring:message code="contact.label.phoneNumberPersonal.value" />">
+		<input type="text" id="workPhoneNumber" name="workPhoneNumber" placeholder="<spring:message code="contact.label.phoneNumberWork.value" />">
 		<input type="text" id="street" name="street" placeholder="<spring:message code="address.label.street.value" />">
-		<label for="unit">
-			<spring:message code="address.label.unit.value" />
-		</label>
 		<input type="text" id="unit" name="unit" placeholder="<spring:message code="address.label.unit.value" />">
-		<label for="city">
-			<spring:message code="address.label.city.value" />
-		</label>
 		<input type="text" id="city" name="city" placeholder="<spring:message code="address.label.city.value" />">
-		<label for="state">
-			<spring:message code="address.label.state.value" />
-		</label>
 		<select id="state" name="state">
 			<option value="AL">Alabama</option>
 			<option value="AK">Alaska</option>
@@ -105,15 +75,26 @@
 			<option value="WI">Wisconsin</option>
 			<option value="WY">Wyoming</option>
 		</select>
-		<label for="zip">
-			<spring:message code="address.label.zip.value" />
-		</label>
 		<input type="text" id="zip" name="zip" placeholder="<spring:message code="address.label.zip.value" />">
-		<input type="button" onclick="saveValues()" value="Submit">
-		<input type="button" id="cancel" onclick="refreshContactsList()" value="Cancel">
+		<input type="button" id="save" onclick="saveContact(0)" value="Submit">
+		<input type="button" id="cancel" onclick="cancelSave()" value="Cancel">
 	</form>
 </section>
 <section id="list">
+	<div>
+		<input type="radio" name="type" value="all" checked>
+		All
+		<input type="radio" name="type" value="city">
+		City
+		<input type="radio" name="type" value="state">
+		State
+		<input type="radio" name="type" value="phoneNumber">
+		Phone Number
+		<input type="radio" name="type" value="email">
+		Email
+		<button>Search</button>
+	</div>
+	<input type="text" id="textSearch">
 	<table id="contactTable">
 		<thead>
 			<tr>
@@ -129,32 +110,12 @@
 			</tr>
 		</thead>
 		<tbody id="contactTableBody">
-			<tr>
-				<td>
-					<button>X</button>
-					<button>Percy Soliz</button>
-					<img class="listPreview" src="<c:url value="/img/testProfile.jpg" />" />
-				</td>
-				<td>
-					<textarea>test</textarea>
-				</td>
-				<td>
-					<textarea>test</textarea>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<button>X</button>
-					<button>Percy Soliz</button>
-					<img class="listPreview" src="<c:url value="/img/testProfile.jpg" />" />
-				</td>
-				<td>
-					<textarea>test</textarea>
-				</td>
-				<td>
-					<textarea>test</textarea>
-				</td>
-			</tr>
 		</tbody>
 	</table>
 </section>
+<div id="dialog-message" title="Message From Server" style="display: none">
+	<p id="dialogMessageText"></p>
+</div>
+<div id="dialog-loading" title="Message From Server" style="display: none">
+	<p id="dialogMessageTextLoading"></p>
+</div>

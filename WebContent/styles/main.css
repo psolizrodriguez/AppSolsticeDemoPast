@@ -2,20 +2,24 @@
 
 html {
 	height: 100%;
+	text-align: center;
 }
 
 body {
 	height: 100%;
-	width: 500px;
+	width: 100%;
+	text-align: center;
+	padding-left: 20%;
+	padding-right: 20%;
 }
 
-#output {
+#profileImage {
 	max-width: 300px;
 }
 
 main {
-	width: 100%;
 	min-height: 50%;
+	max-width: 60%;
 }
 
 header {
@@ -23,11 +27,13 @@ header {
 	font-family: 'Museo sans';
 	font-size: 18px;
 	color: white;
+	max-width: 60%;
 }
 
 footer {
 	background-color: #333;
 	color: white;
+	max-width: 60%;
 }
 
 ul {
@@ -88,6 +94,7 @@ input[type=button]:hover {
 	border-radius: 5px;
 	background-color: #f2f2f2;
 	padding: 20px;
+	text-align: left;
 }
 
 #imageContainer {
@@ -102,6 +109,10 @@ input[type=button]:hover {
 	width: 100%;
 	border: 1px solid black;
 	margin-top: 20px;
+}
+
+.ui-dialog-titlebar-close {
+	visibility: hidden;
 }
 
 #contactTable tr {
@@ -122,6 +133,7 @@ input[type=button]:hover {
 	height: 100px;
 	font-size: 10px;
 }
-#cancel{
+
+#cancel {
 	background-color: red;
 }

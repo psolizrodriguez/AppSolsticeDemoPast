@@ -44,12 +44,13 @@ public class ContactRepresentation extends AbstractRepresentation {
 		this.contactId = contact.getContactId();
 		this.name = contact.getName();
 		this.company = contact.getCompany();
-		this.profileImage = contact.getProfileImage();
+		this.profileImage = AppBaseConstantsWeb.PROJECT_URL + AppBaseConstantsWeb.IMAGE_VIEWER_CONTROLLER + contact.getContactId();
 		this.email = contact.getEmail();
 		this.birthdate = AppBaseUtilsWeb.CalendarToString(contact.getBirthdate(), AppBaseConstantsWeb.DATE_FORMAT);
 		this.personalPhoneNumber = contact.getPersonalPhoneNumber();
 		this.workPhoneNumber = contact.getWorkPhoneNumber();
 		this.address = new AddressRepresentation(contact.getAddress());
+		createLinks(String.valueOf(this.contactId));
 	}
 
 	public Long getContactId() {

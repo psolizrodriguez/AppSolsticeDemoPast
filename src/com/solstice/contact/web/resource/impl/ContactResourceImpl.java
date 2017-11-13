@@ -39,33 +39,24 @@ public class ContactResourceImpl implements ContactResource {
 	@PUT
 	@Path("{contactId}")
 	public Response updateContact(@PathParam("contactId") Long contactId, ContactRequest contactRequest) {
-		// TODO Auto-generated method stub
-		System.out.println("Entra a update");
-		return Response.status(Status.OK).build();
+		if (contactActivity.updateContact(contactId,contactRequest)) {
+			return Response.status(Status.OK).build();
+		}
+		return Response.status(Status.BAD_REQUEST).build();
 	}
 
 	@DELETE
 	@Path("{contactId}")
 	public Response deleteContact(@PathParam("contactId") Long contactId) {
-		// TODO Auto-generated method stub
-		System.out.println("Entra a delete");
-		return Response.status(Status.OK).build();
+		if (contactActivity.deleteContact(contactId)) {
+			return Response.status(Status.OK).build();
+		}
+		return Response.status(Status.BAD_REQUEST).build();
 	}
 
 	@GET
 	@Path("{contactId}")
 	public ContactRepresentation getContactById(@PathParam("contactId") Long contactId) {
-		// TODO Auto-generated method stub
-		System.out.println("Entra a get by id");
-		return null;
+		return contactActivity.getContactById(contactId);
 	}
-
-	public ContactActivity getContactActivity() {
-		return contactActivity;
-	}
-
-	public void setContactActivity(ContactActivity contactActivity) {
-		this.contactActivity = contactActivity;
-	}
-
 }

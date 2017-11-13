@@ -35,35 +35,61 @@ public class ContactActivityImpl implements ContactActivity {
 		return listContactRepresentation;
 	}
 
-	@Override
-	public ContactRepresentation createContact(ContactRequest contactRequest) {
+	public Contact createContactFromContactRequest(ContactRequest contactRequest, Contact contact) {
 		String encodedImage = contactRequest.getProfileImage();
 		contactRequest.setProfileImage(null);
-		Contact contact = new Contact(null, contactRequest.getName(), contactRequest.getCompany(),
+		Long contactId = null;
+		Long addressId = null;
+		if (contact != null) {
+			contactId = contact.getContactId();
+			addressId = contact.getAddress().getAddressId();
+		}
+		contact = new Contact(contactId, contactRequest.getName(), contactRequest.getCompany(),
 				contactRequest.getProfileImage(), contactRequest.getEmail(),
 				AppBaseUtilsWeb.StringToCalendar(contactRequest.getBirthdate(), AppBaseConstantsWeb.DATE_FORMAT),
 				contactRequest.getPersonalPhoneNumber(), contactRequest.getWorkPhoneNumber(),
-				new Address(null, contactRequest.getAddress().getStreet(), contactRequest.getAddress().getUnit(),
+				new Address(addressId, contactRequest.getAddress().getStreet(), contactRequest.getAddress().getUnit(),
 						contactRequest.getAddress().getCity(), contactRequest.getAddress().getState(),
 						contactRequest.getAddress().getZip()));
 		contact = contactService.save(contact);
 		if (contact != null) {
 			// Saving profileImage into the server
 			BufferedImage profileImage = AppBaseUtilsWeb.decodeToImage(encodedImage);
-			if (AppBaseUtilsWeb.saveImageToServer(profileImage, String.valueOf(contact.getContactId()))) {
-				return new ContactRepresentation(contact);
-			}
+			AppBaseUtilsWeb.saveImageToServer(profileImage, String.valueOf(contact.getContactId()));
+		}
+		return contact;
+	}
 
+	@Override
+	public ContactRepresentation createContact(ContactRequest contactRequest) {
+		return new ContactRepresentation(createContactFromContactRequest(contactRequest, null));
+	}
+
+	@Override
+	public boolean deleteContact(Long contactId) {
+		Contact contact = contactService.getById(contactId);
+		if (contact != null) {
+			return contactService.remove(contact);
+		}
+		return false;
+	}
+
+	@Override
+	public ContactRepresentation getContactById(Long contactId) {
+		Contact contact = contactService.getById(contactId);
+		if (contact != null) {
+			return new ContactRepresentation(contact);
 		}
 		return null;
 	}
 
-	public ContactService getContactService() {
-		return contactService;
-	}
-
-	public void setContactService(ContactService contactService) {
-		this.contactService = contactService;
+	@Override
+	public boolean updateContact(Long contactId, ContactRequest contactRequest) {
+		Contact contact = contactService.getById(contactId);
+		if (contact != null) {
+			return createContactFromContactRequest(contactRequest, contact) != null;
+		}
+		return false;
 	}
 
 }

@@ -4,7 +4,7 @@
 [Senior Java/Spring Developer](https://stackoverflow.com/jobs/158140/senior-java-spring-developer-solstice)  
 
 ## Applicant 
-Percy Soliz  
+[Percy Soliz](https://www.linkedin.com/in/psolizrodriguez/)  
 
 ## Purpose
 As part of Solstice’s hiring process, we ask interviewees to complete a small project to help assess skill, experience, ingenuity, problem-solving and knowledge.  

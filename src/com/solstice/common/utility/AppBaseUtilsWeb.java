@@ -4,7 +4,6 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.math.BigDecimal;
-import java.text.MessageFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -238,23 +237,6 @@ public class AppBaseUtilsWeb {
 			e.printStackTrace();
 		}
 		return rv;
-	}
-
-	public static String[] getValuesOfPropertiesForLinks(String service, String uri, int methodNumber,
-			String... params) {
-		String resourcePath = "link." + service + "." + uri + "." + methodNumber + ".";
-		String[] result = new String[4];
-		System.out.println(resourcePath);
-		result[0] = AppBaseConstantsWeb.LINKS_PROPERTIES.getProperty(resourcePath + "type");
-		result[1] = AppBaseConstantsWeb.LINKS_PROPERTIES.getProperty(resourcePath + "method");
-		result[2] = AppBaseConstantsWeb.LINKS_PROPERTIES.getProperty(resourcePath + "rel");
-		result[3] = AppBaseConstantsWeb.LINKS_PROPERTIES.getProperty(resourcePath + "href");
-		if (params != null) {
-			result[3] = MessageFormat.format(result[3], params);
-		}
-		result[3] = AppBaseConstantsWeb.SERVICES_URL + result[3];
-
-		return result;
 	}
 
 	public static WebClient createWebClientJUnitTest(String path) {

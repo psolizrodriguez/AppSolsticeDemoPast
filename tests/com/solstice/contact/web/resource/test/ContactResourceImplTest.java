@@ -1,7 +1,9 @@
 package com.solstice.contact.web.resource.test;
 
-import java.io.InputStream;
 import java.util.List;
+
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -40,7 +42,6 @@ public class ContactResourceImplTest extends Assert {
 
 	@Test
 	public void createContactTest() {
-
 		ContactRepresentation contactRepresentation = new ContactRepresentation(null, "Percy Soliz", "Solstice",
 				AppBaseConstantsWeb.ENCODED_IMAGE, "percy.soliz.rodriguez@gmail.com", "02/01/1988", "312-383-8870",
 				null, new AddressRepresentation(null, "1068 W Granville Ave", "22", "Chicago", "IL", "60660"));
@@ -52,28 +53,28 @@ public class ContactResourceImplTest extends Assert {
 	}
 
 	@Test
-	public void storeImage() {
-		InputStream image = getClass().getClassLoader().getResourceAsStream("testProfile.jpg");
-		assertNotNull(image);
+	public void deleteContactTest() {
+		Response response = AppBaseUtilsWeb.createWebClientJUnitTest("contact/1").delete();
+		assertNotNull(response);
+		assertEquals(response.getStatus(), Status.BAD_REQUEST.getStatusCode());
 	}
 
-	/*
-	 * @Test public void testGetBookWithWebClient() { WebClient client =
-	 * WebClient.create(ENDPOINT_ADDRESS);
-	 * WebClient.getConfig(client).getRequestContext().put(LocalConduit.
-	 * DIRECT_DISPATCH, Boolean.TRUE); client =
-	 * client.accept("application/json").type("application/json").path("/contact");
-	 * String getRequestURI = client.getCurrentURI().toString();
-	 * System.out.println("Client GET METHOD Request URI:  " + getRequestURI);
-	 * ContactRepresentation contactRepresentation =
-	 * client.get(ContactRepresentation.class); assertEquals("Percy Soliz",
-	 * contactRepresentation.getName()); }
-	 * 
-	 * 
-	 * EmployeeRequest employeeRequest = new EmployeeRequest();
-	 * employeeRequest.setFirstName("Michael");
-	 * employeeRequest.setLastName("Gerard");
-	 * 
-	 * String responsePost = postClient.post(employeeRequest, String.class);
-	 */
+	@Test
+	public void getContactById() {
+		ContactRepresentation contactRepresentation = AppBaseUtilsWeb.createWebClientJUnitTest("contact/10")
+				.get(ContactRepresentation.class);
+		assertNotNull(contactRepresentation);
+		assertEquals(contactRepresentation.getName(), "Peter Parker");
+	}
+
+	@Test
+	public void updateContact() {
+		ContactRepresentation contactRepresentation = AppBaseUtilsWeb.createWebClientJUnitTest("contact/10")
+				.get(ContactRepresentation.class);
+		contactRepresentation.setName("Peter Parker");
+		Response response = AppBaseUtilsWeb.createWebClientJUnitTest("contact/10").put(contactRepresentation);
+		assertNotNull(response);
+		assertEquals(response.getStatus(), Status.OK.getStatusCode());
+	}
+
 }

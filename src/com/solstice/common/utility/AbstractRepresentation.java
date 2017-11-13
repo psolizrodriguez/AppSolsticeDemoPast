@@ -6,7 +6,8 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
 
-import com.solstice.contact.web.representations.AddressRepresentation;
+import com.solstice.common.constants.AppBaseConstantsWeb;
+import com.solstice.contact.web.representations.ContactRepresentation;
 
 public abstract class AbstractRepresentation {
 
@@ -22,18 +23,14 @@ public abstract class AbstractRepresentation {
 	}
 
 	public void createLinks(String... params) {
-		List<String[]> valuesLinks = new ArrayList<>();
-		int counter = 0;
-		if (this instanceof AddressRepresentation) {
-			valuesLinks.add(AppBaseUtilsWeb.getValuesOfPropertiesForLinks("orderService", "searchInventoryofProduct",
-					counter++, params));
-		}
-		if (valuesLinks != null && valuesLinks.size() > 0) {
-			this.links = new ArrayList<>();
-			for (String[] strings : valuesLinks) {
-				this.links.add(new Link(strings[0], strings[1], strings[2], strings[3]));
-			}
-
+		this.links = new ArrayList<>();
+		if (this instanceof ContactRepresentation) {
+			this.links.add(new Link("application/json", "DELETE", "delete",
+					AppBaseConstantsWeb.SERVICES_URL + "contact/" + params[0]));
+			this.links.add(new Link("application/json", "GET", "refresh",
+					AppBaseConstantsWeb.SERVICES_URL + "contact/" + params[0]));
+			this.links.add(new Link("application/json", "PUT", "modify",
+					AppBaseConstantsWeb.SERVICES_URL + "contact/" + params[0]));
 		}
 	}
 }
